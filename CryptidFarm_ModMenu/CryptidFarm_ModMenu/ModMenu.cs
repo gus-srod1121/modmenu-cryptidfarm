@@ -1,4 +1,5 @@
 ﻿using MelonLoader;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,20 +36,46 @@ namespace CryptidFarm_ModMenu
 
         private void CreateModMenuUI()
         {
+            // Create canvas
             canvasObj = new("ModMenuCanvas");
-
             Canvas canvas = canvasObj.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1 | AdditionalCanvasShaderChannels.TexCoord2 | AdditionalCanvasShaderChannels.TexCoord3;
             canvas.pixelPerfect = false;
 
+            // Scale canvas
             CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
             canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             canvasScaler.referenceResolution = new Vector2(2560, 1400);
 
+            // Dont Destroy
             GameObject.DontDestroyOnLoad(canvasObj);
 
-            GameObject toggleModMenuButton = new("ToggleModMenuButton");
+            // Create Button
+            Button toggleModMenuButton = new GameObject("toggleModMenuButton").AddComponent<Button>();
+            toggleModMenuButton.transform.SetParent(canvasObj.transform, false);
+            Image modMenuBtnImage = toggleModMenuButton.gameObject.AddComponent<Image>();
+            modMenuBtnImage.color = new(0.2f, 0.2f, 0.2f, 0.9f);
+
+            // Position Button
+            RectTransform btnRect = toggleModMenuButton.GetComponent<RectTransform>();
+            btnRect.anchorMin = Vector2.up;
+            btnRect.anchorMax = Vector2.up;
+            btnRect.pivot = Vector2.up;
+            btnRect.anchoredPosition = new(20, -20);
+            btnRect.sizeDelta = new(150, 150);
+
+            //Add Text to Button
+            TextMeshProUGUI modMenuButtonText = new GameObject("Text").AddComponent<TextMeshProUGUI>();
+            modMenuButtonText.transform.SetParent(toggleModMenuButton.transform, false);
+            modMenuButtonText.SetText("Mod Menu");
+
+            modMenuButtonText.fontSize = 24;
+            modMenuButtonText.alignment = TextAlignmentOptions.Midline;
+            modMenuButtonText.color = new(1f, 1f, 1f, 1f); RectTransform textRect = modMenuButtonText.GetComponent<RectTransform>();
+            textRect.anchorMin = Vector2.zero;
+            textRect.anchorMax = Vector2.one;
+            textRect.sizeDelta = Vector2.zero;
         }
     }
 }
