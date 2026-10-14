@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -15,10 +15,29 @@
 
 	<PropertyGroup>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<EnableDefaultCompileItems>False</EnableDefaultCompileItems>
 	</PropertyGroup>
 
+  <!-- Mod Files -->
 	<ItemGroup>
-		<Compile Include="Core.cs" />
+		<Compile Include="LibraryCore.cs" />
+		<Compile Include="Core\AssetUtils.cs" />
 	</ItemGroup>
+  
+  <!-- Reference game DLLs in libs/ folder -->
+  <ItemGroup>
+    <Reference Include="MelonLoader">
+      <HintPath>..\libs\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\libs\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  
 </Project>
