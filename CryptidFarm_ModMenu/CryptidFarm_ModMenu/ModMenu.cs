@@ -1,5 +1,6 @@
 ﻿using MelonLoader;
 using UnityEngine;
+using UnityEngine.UI;
 
 [assembly: MelonInfo(typeof(CryptidFarm_ModMenu.ModMenu), "ModMenu", "0.1.0", "grcubes", null)]
 [assembly: MelonGame("GamebyFlamey", "Cryptid Farm")]
@@ -8,40 +9,46 @@ namespace CryptidFarm_ModMenu
 {
     public class ModMenu : MelonMod
     {
+        private GameObject canvasObj;
+        private GameObject modMenuObj;
         private bool showMenu = false;
-        private Rect windowRect = new(20, 20, 1000, 1000);
 
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initializing Mod Menu.");
         }
 
-        public override void OnGUI()
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            if (GUI.Button(new(20, 20, 300, 100), showMenu ? "Close Mod Menu" : "Open Mod Menu"))
-            {
-                LoggerInstance.Msg($"{(showMenu ? "Closing":"Opening")} Mod Menu");
-                showMenu = !showMenu;
-            }
+            LoggerInstance.Msg($"Scene Loaded: {sceneName}");
 
-            if (showMenu)
+            if (sceneName.Equals("Menu Animated 2"))
             {
-                windowRect = GUI.Window(0, windowRect, DrawMenuWindow, "Cryptid Farm");
+                LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
+                CreateModMenuUI();
+            }
+            else
+            {
+                GameObject.Destroy(canvasObj);
             }
         }
 
-        private void DrawMenuWindow(int windowID)
+        private void CreateModMenuUI()
         {
-            GUILayout.BeginVertical();
-            GUILayout.Label("Mod Menu");
+            canvasObj = new("ModMenuCanvas");
 
-            if (GUILayout.Button("Test Button"))
-            {
-                LoggerInstance.Msg("Test button pressed");
-            }
-            GUILayout.EndVertical();
+            Canvas canvas = canvasObj.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1 | AdditionalCanvasShaderChannels.TexCoord2 | AdditionalCanvasShaderChannels.TexCoord3;
+            canvas.pixelPerfect = false;
 
-            GUI.DragWindow(new(0, 0, 1000, 1000));
+            CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
+            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvasScaler.referenceResolution = new Vector2(2560, 1400);
+
+            GameObject.DontDestroyOnLoad(canvasObj);
+
+            GameObject toggleModMenuButton = new("ToggleModMenuButton");
         }
     }
 }
