@@ -1,9 +1,24 @@
 <Project>
-  <PropertyGroup>
-    <!-- PC Game Path -->
-    <GamePath Condition="Exists('C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm')">C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm</GamePath>
-    
-    <!-- Laptop Game Path -->
-    <GamePath Condition="Exists('C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm')">C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm</GamePath>
-  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MelonLoader">
+      <HintPath>Libs\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>Libs\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>Libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Libs\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Libs\TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
 </Project>
