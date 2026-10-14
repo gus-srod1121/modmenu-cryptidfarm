@@ -65,6 +65,9 @@ namespace CryptidFarm_ModMenu
             btnRect.anchoredPosition = new(20, -20);
             btnRect.sizeDelta = new(150, 150);
 
+            // On Button Press
+            toggleModMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
+
             //Add Text to Button
             TextMeshProUGUI modMenuButtonText = new GameObject("Text").AddComponent<TextMeshProUGUI>();
             modMenuButtonText.transform.SetParent(toggleModMenuButton.transform, false);
@@ -76,6 +79,11 @@ namespace CryptidFarm_ModMenu
             textRect.anchorMin = Vector2.zero;
             textRect.anchorMax = Vector2.one;
             textRect.sizeDelta = Vector2.zero;
+        }
+
+        private void ToggleModMenuBtnPressed()
+        {
+            LoggerInstance.Msg("Mod Menu Button Pressed");
         }
     }
 }
