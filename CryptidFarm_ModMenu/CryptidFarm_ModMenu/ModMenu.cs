@@ -59,11 +59,13 @@ namespace CryptidFarm_ModMenu
 
             // Position Button
             RectTransform btnRect = toggleModMenuButton.GetComponent<RectTransform>();
-            btnRect.anchorMin = Vector2.up;
-            btnRect.anchorMax = Vector2.up;
-            btnRect.pivot = Vector2.up;
-            btnRect.anchoredPosition = new(20, -20);
-            btnRect.sizeDelta = new(150, 150);
+
+            btnRect.anchorMin = new Vector2(1, 0.5f);   // Top-Left Anchor
+            btnRect.anchorMax = new Vector2(1, 0.5f);   // Bottom-Right Anchor
+            btnRect.pivot = new Vector2(1, 0.5f);       // Pivot
+
+            btnRect.anchoredPosition = new(-50, 0);     // Relative Position
+            btnRect.sizeDelta = new(600, 250);          // Button Size
 
             // On Button Press
             toggleModMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
@@ -73,7 +75,7 @@ namespace CryptidFarm_ModMenu
             modMenuButtonText.transform.SetParent(toggleModMenuButton.transform, false);
             modMenuButtonText.SetText("Mod Menu");
 
-            modMenuButtonText.fontSize = 24;
+            modMenuButtonText.fontSize = 48;
             modMenuButtonText.alignment = TextAlignmentOptions.Midline;
             modMenuButtonText.color = new(1f, 1f, 1f, 1f); RectTransform textRect = modMenuButtonText.GetComponent<RectTransform>();
             textRect.anchorMin = Vector2.zero;
