@@ -28,7 +28,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             if (sceneName.Equals("Menu Animated 2"))
             {
                 LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
-                CreateModMenuUI();
+                CreateModMenuButtonUI();
             }
             else
             {
@@ -36,7 +36,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             }
         }
 
-        private void CreateModMenuUI()
+        private void CreateModMenuButtonUI()
         {
             // Create canvas
             canvasObj = new GameObject("ModMenuCanvas");
@@ -44,6 +44,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1 | AdditionalCanvasShaderChannels.TexCoord2 | AdditionalCanvasShaderChannels.TexCoord3;
             canvas.pixelPerfect = false;
+            canvasObj.AddComponent<GraphicRaycaster>();
 
             // Scale canvas
             CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
@@ -60,6 +61,14 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
 
             // Apply native Animator Controller "AnimMenu_Button".
              RuntimeAnimatorController animController = AssetUtils.FindComponentByName<RuntimeAnimatorController>("AnimMenu_Button");
+            if (animController)
+            {
+                Animator anim = toggleModMenuButton.gameObject.AddComponent<Animator>();
+                anim.runtimeAnimatorController = animController;
+            }
+
+            //Add animations to the button
+            toggleModMenuButton.transition = Selectable.Transition.Animation;
 
             // Find and apply leaf background sprite "leaf button 1"
             Sprite leafSprite = AssetUtils.FindComponentByName<Sprite>("leaf button 1");
@@ -76,12 +85,12 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             // Position Button
             RectTransform btnRect = toggleModMenuButton.GetComponent<RectTransform>();
 
-            btnRect.anchorMin = new Vector2(1, 0.5f);   // Top-Left Anchor
-            btnRect.anchorMax = new Vector2(1, 0.5f);   // Bottom-Right Anchor
-            btnRect.pivot = new Vector2(1, 0.5f);       // Pivot
+            btnRect.anchorMin = new Vector2(0.5f, 0.5f);    // Top-Left Anchor
+            btnRect.anchorMax = new Vector2(0.5f, 0.5f);    // Bottom-Right Anchor
+            btnRect.pivot = new Vector2(0.5f, 0.5f);        // Pivot
 
-            btnRect.anchoredPosition = new(-50, 0);     // Relative Position
-            btnRect.sizeDelta = new(600, 250);          // Button Size
+            btnRect.anchoredPosition = new(440, -8);        // Relative Position
+            btnRect.sizeDelta = new(600, 250);              // Button Size
 
             // On Button Press
             toggleModMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
