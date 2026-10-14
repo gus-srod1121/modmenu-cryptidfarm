@@ -57,6 +57,10 @@ namespace CryptidFarm_ModMenu
             Image modMenuBtnImage = toggleModMenuButton.gameObject.AddComponent<Image>();
             modMenuBtnImage.color = new(0.2f, 0.2f, 0.2f, 0.9f);
 
+            // Apply native Animator COntroller "AnimMenu_Button".
+
+            // Find and apply leaf background sprite "leaf button 1"
+
             // Position Button
             RectTransform btnRect = toggleModMenuButton.GetComponent<RectTransform>();
 

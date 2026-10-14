@@ -1,5 +1,9 @@
 <Project>
   <PropertyGroup>
-    <GamePath>C:\Users\gusta\GUS\Programacion\GameDev\Mods\Cryptid Farm - Melon\Game - Cryptid Farm</GamePath>
+    <!-- PC Game Path -->
+    <GamePath Condition="Exists('C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm')">C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm</GamePath>
+    
+    <!-- Laptop Game Path -->
+    <GamePath Condition="Exists('C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm')">C:\Users\gusta\GUS\Programacion\GameDev\Modding\Cryptid Farm - Melon\Game - Cryptid Farm</GamePath>
   </PropertyGroup>
 </Project>
