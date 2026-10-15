@@ -21,5 +21,23 @@ namespace grcubes.CryptidFarm.CryptidLibrary.Core
             }
             return null;
         }
+
+        /// <summary>
+        /// Finds any loaded Unity object or component whose name contains the substring
+        /// </summary>
+        /// <typeparam name="T">The object type you are searching for</typeparam>
+        /// <param name="subs">The substring to search for the object or component</param>
+        /// <returns>The first T object containing the substring, or null if none are found.</returns>
+        public static T FindComponentWithNameContaining<T>(string subs) where T : UnityEngine.Object
+        {
+            foreach (T temp in Resources.FindObjectsOfTypeAll<T>())
+            {
+                if (temp.name.Contains(subs))
+                {
+                    return temp;
+                }
+            }
+            return null;
+        }
     }
 }
