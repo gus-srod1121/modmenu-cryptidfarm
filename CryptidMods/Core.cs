@@ -34,7 +34,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             GameObject quitButtonObj = AssetUtils.FindComponentByName<GameObject>("Quit button");
             if (!quitButtonObj)
             {
-                LoggerInstance.Error("Nope, no button found");
+                LoggerInstance.Error("Quit button not found");
                 return;
             }
 
@@ -42,7 +42,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             GameObject clonedButtonObj = GameObject.Instantiate(quitButtonObj, quitButtonObj.transform.parent);
             if (!clonedButtonObj)
             {
-                LoggerInstance.Error("Failed to clone button object");
+                LoggerInstance.Error("Failed to clone Quit button object");
                 return;
             }
             clonedButtonObj.name = "Mods button";
@@ -58,27 +58,27 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             GameObject modButtonContent = clonedButtonObj.transform.Find("Button content").gameObject;
             if (!modButtonContent)
             {
-                LoggerInstance.Error("Couldn't find Button Content in mod button object");
+                LoggerInstance.Error("Cloned Quit Button's Button content not found");
                 return;
             }
             LogAllObjectInfo(modButtonContent);
 
-            Button quitButton = modButtonContent.GetComponentInChildren<Button>();
-            if (!quitButton)
+            Button clonedQuitButton = modButtonContent.GetComponentInChildren<Button>();
+            if (!clonedQuitButton)
             {
-                LoggerInstance.Error("Couldn't find Mod Button Content Button component");
+                LoggerInstance.Error("Mod Button Content's Button component not found");
                 return;
             }
             LogAllObjectInfo(modButtonContent);
 
             // Destroy old quit button component
-            GameObject.DestroyImmediate(quitButton);
+            GameObject.DestroyImmediate(clonedQuitButton);
 
             // Add new Button component
             Button modMenuButton = modButtonContent.AddComponent<Button>();
             if (!modMenuButton)
             {
-                LoggerInstance.Error("Mod Menu button component not added");
+                LoggerInstance.Error("Mod Menu button component failed to be added");
                 return;
             }
             Animator anim = modButtonContent.GetComponent<Animator>();
@@ -90,12 +90,12 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             TextMeshProUGUI btnText = modMenuButton.GetComponentInChildren<TextMeshProUGUI>();
             if (!btnText)
             {
-                LoggerInstance.Error("Couldn't find TMP component in Button");
+                LoggerInstance.Error("Mod Menu Button's TMP component not found");
                 return;
             }
             btnText.SetText("Mods");
             modMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
-            LoggerInstance.Msg("Mod Menu cloned successfully");
+            LoggerInstance.Msg("Mod Menu Button created successfully");
         }
 
         private void ToggleModMenuBtnPressed()
