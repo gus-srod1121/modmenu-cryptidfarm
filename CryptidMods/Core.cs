@@ -27,15 +27,14 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             {
                 LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
                 CloneModMenuButton();
-                CreateModMenuButtonUI();
+                //CreateModMenuButtonUI();
             }
         }
 
         private void CloneModMenuButton()
         {
             // Find button to clone
-            GameObject quitButtonObj = AssetUtils.FindComponentByName<GameObject>("Quit button"); ;
-
+            GameObject quitButtonObj = AssetUtils.FindComponentByName<GameObject>("Quit button");
             if (!quitButtonObj)
             {
                 LoggerInstance.Error("Nope, no button found");
@@ -49,6 +48,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
                 LoggerInstance.Error("Failed to clone button object");
                 return;
             }
+            clonedButtonObj.name = "Mods button";
 
             // Adjust button position
             RectTransform btnRt = clonedButtonObj.GetComponent<RectTransform>();
@@ -71,22 +71,29 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
                 return;
             }
 
-            // Destroy old quit button functionality
-            Button quitButtonComponent = quitButton;
-            if (!quitButtonComponent)
-            {
-                LoggerInstance.Error("Couldn't find Quit button component");
-                return;
-            }
+            // Destroy old quit button component
             GameObject.Destroy(quitButton);
 
-            // Copy button animations
+            // Add new Button component
             Button modMenuButton = clonedButtonObj.AddComponent<Button>();
             if (!modMenuButton)
             {
                 LoggerInstance.Error("Mod Menu button component not added");
                 return;
             }
+
+            // Apply native Animator Controller "AnimMenu_Button"
+            RuntimeAnimatorController animController = AssetUtils.FindComponentByName<RuntimeAnimatorController>("AnimMenu_Button");
+            if (!animController)
+            {
+                LoggerInstance.Error("'AnimMenu_Button' animator controller not found");
+                return;
+            }
+            Animator anim = modMenuButton.gameObject.AddComponent<Animator>();
+            anim.runtimeAnimatorController = animController;
+
+            // Enable Animation transition
+            modMenuButton.transition = Selectable.Transition.Animation;
 
             // Change button text
             TextMeshProUGUI btnText = modMenuButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -96,8 +103,8 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
                 return;
             }
             btnText.SetText("Mods");
-
             modMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
+            LoggerInstance.Msg("Mod Menu cloned successfully");
         }
 
         private void CreateModMenuButtonUI()
