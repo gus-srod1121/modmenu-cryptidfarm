@@ -12,8 +12,6 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
 {
     public class Core : MelonMod
     {
-        private bool showMenu = false;
-
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initializing Mod Menu.");
@@ -27,7 +25,6 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             {
                 LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
                 CloneModMenuButton();
-                //CreateModMenuButtonUI();
             }
         }
 
@@ -99,78 +96,6 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             btnText.SetText("Mods");
             modMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
             LoggerInstance.Msg("Mod Menu cloned successfully");
-        }
-
-        private void CreateModMenuButtonUI()
-        {
-            // Create canvas
-            GameObject canvasObj = new GameObject("ModMenuCanvas");
-            Canvas canvas = canvasObj.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.additionalShaderChannels = AdditionalCanvasShaderChannels.TexCoord1 | AdditionalCanvasShaderChannels.TexCoord2 | AdditionalCanvasShaderChannels.TexCoord3;
-            canvas.pixelPerfect = false;
-            canvasObj.AddComponent<GraphicRaycaster>();
-
-            // Scale canvas
-            CanvasScaler canvasScaler = canvasObj.AddComponent<CanvasScaler>();
-            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            canvasScaler.referenceResolution = new Vector2(2560, 1400);
-
-            // Dont Destroy
-            GameObject.DontDestroyOnLoad(canvasObj);
-
-            // Create Button
-            Button toggleModMenuButton = new GameObject("toggleModMenuButton").AddComponent<Button>();
-            toggleModMenuButton.transform.SetParent(canvasObj.transform, false);
-            Image modMenuBtnImage = toggleModMenuButton.gameObject.AddComponent<Image>();
-
-            // Apply native Animator Controller "AnimMenu_Button".
-            RuntimeAnimatorController animController = AssetUtils.FindComponentByName<RuntimeAnimatorController>("AnimMenu_Button");
-            if (animController)
-            {
-                Animator anim = toggleModMenuButton.gameObject.AddComponent<Animator>();
-                anim.runtimeAnimatorController = animController;
-            }
-
-            //Add animations to the button
-            toggleModMenuButton.transition = Selectable.Transition.Animation;
-
-            // Find and apply leaf background sprite "leaf button 1"
-            Sprite leafSprite = AssetUtils.FindComponentByName<Sprite>("leaf button 1");
-
-            if (leafSprite)
-            {
-                modMenuBtnImage.sprite = leafSprite;
-            }
-            else
-            {
-                modMenuBtnImage.color = new(0.2f, 0.2f, 0.2f, 0.9f);
-            }
-
-            // Position Button
-            RectTransform btnRect = toggleModMenuButton.GetComponent<RectTransform>();
-
-            btnRect.anchorMin = new Vector2(0.5f, 0.5f);    // Top-Left Anchor
-            btnRect.anchorMax = new Vector2(0.5f, 0.5f);    // Bottom-Right Anchor
-            btnRect.pivot = new Vector2(0.5f, 0.5f);        // Pivot
-
-            btnRect.anchoredPosition = new(440, 200);       // Relative Position
-            btnRect.sizeDelta = new(600, 250);              // Button Size
-
-            // On Button Press
-            toggleModMenuButton.onClick.AddListener(ToggleModMenuBtnPressed);
-
-            //Add Text to Button
-            TextMeshProUGUI modMenuButtonText = new GameObject("Text").AddComponent<TextMeshProUGUI>();
-            modMenuButtonText.transform.SetParent(toggleModMenuButton.transform, false);
-            modMenuButtonText.SetText("Mod Menu 2");
-
-            modMenuButtonText.fontSize = 48;
-            modMenuButtonText.alignment = TextAlignmentOptions.Midline;
-            modMenuButtonText.color = new(1f, 1f, 1f, 1f); RectTransform textRect = modMenuButtonText.GetComponent<RectTransform>();
-            textRect.anchorMin = Vector2.zero;
-            textRect.anchorMax = Vector2.one;
-            textRect.sizeDelta = Vector2.zero;
         }
 
         private void ToggleModMenuBtnPressed()
