@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<RootNamespace>PlantingRange</RootNamespace>
+		<LangVersion>default</LangVersion>
+		<IsPackable>false</IsPackable>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<AssemblyName>PlantingRange</AssemblyName>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	</PropertyGroup>
+	
+	<!-- Mod Files -->
+	<ItemGroup>
+		<Compile Include="Core.cs" />
+	</ItemGroup>
+
+	<!-- Reference Library -->
+	<ItemGroup>
+		<ProjectReference Include="..\CryptidLibrary\CryptidLibrary.csproj" />
+	</ItemGroup>
+
+	<!-- Reference game DLLs in libs/ folder -->
+	<ItemGroup>
+		<!-- MelonLoader -->
+		<Reference Include="MelonLoader">
+			<HintPath>..\libs\MelonLoader.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!-- Unity Engine -->
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!-- UI -->
+		<Reference Include="UnityEngine.UI">
+			<HintPath>..\libs\UnityEngine.UI.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<HintPath>..\libs\UnityEngine.UIModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>..\libs\Unity.TextMeshPro.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!-- Animation -->
+		<Reference Include="UnityEngine.AnimationModule">
+			<HintPath>..\libs\UnityEngine.AnimationModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+
+		<!-- Cryptid Farm Scripts -->
+		<Reference Include="Assembly-CSharp">
+			<HintPath>..\libs\Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>

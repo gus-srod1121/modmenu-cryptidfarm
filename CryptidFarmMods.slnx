@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="CryptidLibrary/CryptidLibrary.csproj" />
   <Project Path="CryptidMods/ModMenu.csproj" />
+  <Project Path="PlantingRange/PlantingRange.csproj" Id="05cdcd69-864d-499b-bafb-db42fdfb7252" />
 </Solution>
