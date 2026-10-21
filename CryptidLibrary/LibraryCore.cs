@@ -1,4 +1,5 @@
-﻿using MelonLoader;
+﻿using CryptidLibrary.Core;
+using MelonLoader;
 using UnityEngine;
 
 [assembly: MelonInfo(typeof(grcubes.CryptidFarm.CryptidLibrary.LibraryCore), "CryptidLibrary", "0.1.0", "grcubes", null)]
@@ -11,6 +12,11 @@ namespace grcubes.CryptidFarm.CryptidLibrary
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initialized Cryptid Library.");
+        }
+
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+        {
+            LoggerInstance.Msg($"Scene {buildIndex} Loaded: {sceneName}");
         }
     }
 }
