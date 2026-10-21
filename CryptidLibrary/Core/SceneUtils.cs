@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine.SceneManagement;
 
 namespace CryptidLibrary.Core
 {
     public static class SceneUtils
     {
-
+        public static int CurrentScene { get => SceneManager.GetActiveScene().buildIndex; }
     }
 
     public enum Scenes
