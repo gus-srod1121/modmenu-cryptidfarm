@@ -5,12 +5,12 @@ using TMPro;
 
 using grcubes.CryptidFarm.CryptidLibrary.Core;
 
-[assembly: MelonInfo(typeof(grcubes.CryptidFarm.Mods.ModMenu.Core), "ModMenu", "0.1.0", "grcubes", null)]
+[assembly: MelonInfo(typeof(grcubes.CryptidFarm.Mods.ModMenu.ModMenuCore), "ModMenu", "0.1.0", "grcubes", null)]
 [assembly: MelonGame("GamebyFlamey", "Cryptid Farm")]
 
 namespace grcubes.CryptidFarm.Mods.ModMenu
 {
-    public class Core : MelonMod
+    public class ModMenuCore : MelonMod
     {
         public override void OnInitializeMelon()
         {
@@ -19,8 +19,6 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            LoggerInstance.Msg($"Scene Loaded: {sceneName}");
-
             if (sceneName.Equals("Menu Animated 2"))
             {
                 LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
@@ -61,7 +59,6 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
                 LoggerInstance.Error("Cloned Quit Button's Button content not found");
                 return;
             }
-            LogAllObjectInfo(modButtonContent);
 
             Button clonedQuitButton = modButtonContent.GetComponentInChildren<Button>();
             if (!clonedQuitButton)
@@ -69,7 +66,6 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
                 LoggerInstance.Error("Mod Button Content's Button component not found");
                 return;
             }
-            LogAllObjectInfo(modButtonContent);
 
             // Destroy old quit button component
             GameObject.DestroyImmediate(clonedQuitButton);
