@@ -22,4 +22,4 @@ A mod menu for Cryptid Farm
 
 
 <!-- MEDIA LINKING -->
-[target-rect-transform-values]: "./README/Media/1080pRectTransformButtonValues.png"
+[target-rect-transform-values]: "https://github.com/gus-srod1121/modmenu-cryptidfarm/blob/dev/README/Media/1080pRectTransformButtonValues.png?raw=true"
