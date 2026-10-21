@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 
 using grcubes.CryptidFarm.CryptidLibrary.Core;
+using CryptidLibrary.Core;
 
 [assembly: MelonInfo(typeof(grcubes.CryptidFarm.Mods.ModMenu.ModMenuCore), "ModMenu", "0.1.0", "grcubes", null)]
 [assembly: MelonGame("GamebyFlamey", "Cryptid Farm")]
@@ -19,7 +20,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            if (sceneName.Equals("Menu Animated 2"))
+            if (Scenes.MainMenu == (Scenes)buildIndex)
             {
                 LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
                 CloneModMenuButton();
