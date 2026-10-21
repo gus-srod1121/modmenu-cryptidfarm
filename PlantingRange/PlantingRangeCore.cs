@@ -20,5 +20,7 @@ namespace PlantingRange
                 LoggerInstance.Msg("Game Scene Detected.");
             }
         }
+
+        // TO-DO: Check out the PlayerStats, in the Game Master. Make a cheat maybe.
     }
 }
