@@ -3,7 +3,7 @@ A mod menu for Cryptid Farm
 
 ## Target Values for Mod Menu Button in Main Menu
 
-![Target Rect Transform Values][target-rect-transform-values]
+![Target Rect Transform Values](README/Media/RectTransformButtonValues.png)
 
 ## How to write your own .csproj.user file
 ```xml
@@ -19,7 +19,3 @@ A mod menu for Cryptid Farm
   </Target>
 </Project>
 ```
-
-
-<!-- MEDIA LINKING -->
-[target-rect-transform-values]: "https://github.com/gus-srod1121/modmenu-cryptidfarm/blob/dev/README/Media/1080pRectTransformButtonValues.png?raw=true"
