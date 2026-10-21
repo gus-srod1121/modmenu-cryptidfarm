@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net472</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<RootNamespace>PlantingRange</RootNamespace>
@@ -20,7 +20,7 @@
 	
 	<!-- Mod Files -->
 	<ItemGroup>
-		<Compile Include="Core.cs" />
+		<Compile Include="PlantingRangeCore.cs" />
 	</ItemGroup>
 
 	<!-- Reference Library -->
