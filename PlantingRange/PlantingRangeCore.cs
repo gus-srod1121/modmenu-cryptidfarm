@@ -15,7 +15,7 @@ namespace PlantingRange
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            if (Scenes.Game == (Scenes)buildIndex)
+            if (Scene.Game == (Scene)buildIndex)
             {
                 LoggerInstance.Msg("Game Scene Detected.");
             }

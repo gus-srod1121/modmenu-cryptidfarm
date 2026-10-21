@@ -7,7 +7,7 @@ namespace CryptidLibrary.Core
         public static int CurrentScene { get => SceneManager.GetActiveScene().buildIndex; }
     }
 
-    public enum Scenes
+    public enum Scene
     {
         MainMenu = 0,
         Game = 1,

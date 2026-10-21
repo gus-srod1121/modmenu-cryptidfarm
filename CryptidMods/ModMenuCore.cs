@@ -20,7 +20,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            if (Scenes.MainMenu == (Scenes)buildIndex)
+            if (Scene.MainMenu == (Scene)buildIndex)
             {
                 LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
                 CloneModMenuButton();
