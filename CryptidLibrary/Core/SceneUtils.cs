@@ -10,6 +10,6 @@ namespace CryptidLibrary.Core
     public enum Scenes
     {
         MainMenu = 0,
-        Game = 1
+        Game = 1,
     }
 }
