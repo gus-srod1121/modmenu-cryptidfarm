@@ -1,4 +1,5 @@
-﻿using MelonLoader;
+﻿using CryptidLibrary.Core;
+using MelonLoader;
 
 [assembly: MelonInfo(typeof(PlantingRange.PlantingRangeCore), "PlantingRange", "1.0.0", "Author", null)]
 [assembly: MelonGame(null, null)]
@@ -12,12 +13,12 @@ namespace PlantingRange
             LoggerInstance.Msg("Initializing PlantingRange");
         }
 
-        //public override void OnSceneWasLoaded(int buildIndex, string sceneName)
-        //{
-        //    if (sceneName.Equals("Game"))
-        //    {
-        //        LoggerInstance.Msg("Game Scene Detected.");
-        //    }
-        //}
+        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+        {
+            if (Scenes.Game == (Scenes)buildIndex)
+            {
+                LoggerInstance.Msg("Game Scene Detected.");
+            }
+        }
     }
 }
