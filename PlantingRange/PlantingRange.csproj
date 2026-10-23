@@ -41,6 +41,12 @@
 			<HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+    
+    <!-- Unity Input -->
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\libs\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
 
 		<!-- UI -->
 		<Reference Include="UnityEngine.UI">
