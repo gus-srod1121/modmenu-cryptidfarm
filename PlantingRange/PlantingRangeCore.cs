@@ -10,6 +10,8 @@ namespace PlantingRange
 {
     public class PlantingRangeCore : MelonMod
     {
+        private bool inGameScene = false;
+
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initializing PlantingRange");
@@ -17,14 +19,13 @@ namespace PlantingRange
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            if (Scene.Game == (Scene)buildIndex)
-            {
-                PrintStatsInfo();
-            }
+            inGameScene = Scene.Game == (Scene)buildIndex;
         }
 
         public override void OnUpdate()
         {
+            if (!inGameScene) return;
+
             if (Keyboard.current.backslashKey.wasPressedThisFrame)
             {
                 PrintStatsInfo();
