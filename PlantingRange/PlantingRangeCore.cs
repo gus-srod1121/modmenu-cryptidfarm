@@ -1,7 +1,6 @@
 ﻿using MelonLoader;
 using UnityEngine;
-
-using grcubes.CryptidLibrary;
+using CryptidLibrary.Core;
 
 [assembly: MelonInfo(typeof(PlantingRange.PlantingRangeCore), "PlantingRange", "1.0.0", "Author", null)]
 [assembly: MelonGame(null, null)]
@@ -47,14 +46,32 @@ namespace PlantingRange
             if (testStats)
             {
                 LoggerInstance.Msg("Test stats was found and it worked");
-            } else
+            }
+            else
             {
                 LoggerInstance.Msg("Test stats was not found, it didn't work");
             }
 
             //Print those
-            LoggerInstance.Msg(stats.Stats);
-            LoggerInstance.Msg(stats.Perks);
+            foreach (PlayerStats.stat s in stats.Stats.Values)
+            {
+                LoggerInstance.Msg($"Name: {s.statName}\n" +
+                    $"Initial Value: {s.initialStatValue}\n" +
+                    $"Current Value: {s.statValue}\n" +
+                    $"Value Additive: {s.statValueAdditive}\n" +
+                    $"Rising Cost: {s.risingCost}\n" +
+                    $"Upgrade Cost: {s.upgradeCost}\n" +
+                    $"Times Upgraded: {s.timesUpgraded}\n" +
+                    $"Defined Upgrades: {s.definedUpgrades}\n" +
+                    $"Has Limit: {s.hasLimit}\n" +
+                    $"Limit: {s.limit}\n" +
+                    $"Purchaseable {s.purchaseable}\n" +
+                    $"Progression Required: {s.progressionRequired}\n" +
+                    $"Exponential: {s.exponential}\n" +
+                    $"Tractor Locked Upgrades: {s.tractorLockedUpgrades}\n" +
+                    $"");
+            }
+
             LoggerInstance.Msg(stats.buyBackEnabled);
 
             LoggerInstance.Msg("===============");

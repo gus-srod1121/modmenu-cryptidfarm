@@ -21,6 +21,7 @@
   <!-- Mod Files -->
 	<ItemGroup>
 		<Compile Include="Core\SceneUtils.cs" />
+		<Compile Include="Core\StatsUtils.cs" />
 		<Compile Include="LibraryCore.cs" />
 		<Compile Include="Core\AssetUtils.cs" />
 	</ItemGroup>

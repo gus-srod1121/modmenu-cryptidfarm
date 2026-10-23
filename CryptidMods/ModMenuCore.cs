@@ -2,8 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-using grcubes.CryptidLibrary;
+using CryptidLibrary.Core;
 
 [assembly: MelonInfo(typeof(grcubes.CryptidFarm.Mods.ModMenu.ModMenuCore), "ModMenu", "0.1.0", "grcubes", null)]
 [assembly: MelonGame("GamebyFlamey", "Cryptid Farm")]

@@ -1,9 +1,10 @@
-﻿using MelonLoader;
+﻿using CryptidLibrary;
+using MelonLoader;
 
-[assembly: MelonInfo(typeof(grcubes.CryptidLibrary.LibraryCore), "CryptidLibrary", "0.1.0", "grcubes", null)]
+[assembly: MelonInfo(typeof(LibraryCore), "CryptidLibrary", "0.1.0", "grcubes", null)]
 [assembly: MelonGame("GamebyFlamey", "Cryptid Farm")]
 
-namespace grcubes.CryptidLibrary
+namespace CryptidLibrary
 {
     public class LibraryCore : MelonMod
     {

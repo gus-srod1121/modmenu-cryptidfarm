@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace grcubes.CryptidLibrary
+namespace CryptidLibrary.Core
 {
     public static class AssetUtils
     {
