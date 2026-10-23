@@ -20,7 +20,7 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
         {
             if (Scene.MainMenu == (Scene)buildIndex)
             {
-                LoggerInstance.Msg($"Main Menu Scene Detected. Injecting Mod Menu Button.");
+                LoggerInstance.Msg($"Injecting Mod Menu Button.");
                 CloneModMenuButton();
             }
         }
