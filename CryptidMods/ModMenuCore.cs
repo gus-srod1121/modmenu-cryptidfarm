@@ -48,7 +48,8 @@ namespace grcubes.CryptidFarm.Mods.ModMenu
             RectTransform btnRt = clonedButtonObj.GetComponent<RectTransform>();
             if (btnRt)
             {
-                btnRt.anchoredPosition = new Vector2(btnRt.anchoredPosition.x, btnRt.anchoredPosition.y + 200);
+                btnRt.anchoredPosition = new Vector2(btnRt.anchoredPosition.x, btnRt.anchoredPosition.y + 250);
+                btnRt.rotation = Quaternion.Euler(btnRt.rotation.eulerAngles.x, btnRt.rotation.eulerAngles.y, btnRt.rotation.eulerAngles.z + 20);
             }
 
             // Find Button component in cloned object
