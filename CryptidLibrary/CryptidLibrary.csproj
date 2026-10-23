@@ -25,21 +25,27 @@
 		<Compile Include="LibraryCore.cs" />
 		<Compile Include="Core\AssetUtils.cs" />
 	</ItemGroup>
-  
-	<!-- Reference game DLLs in libs/ folder -->
-	<ItemGroup>
-		<Reference Include="MelonLoader">
-			<HintPath>..\libs\MelonLoader.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="UnityEngine">
-			<HintPath>..\libs\UnityEngine.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-	</ItemGroup>
+
+  <!-- Reference game DLLs in libs/ folder -->
+  <ItemGroup>
+    <!-- MelonLoader -->
+    <Reference Include="MelonLoader">
+      <HintPath>..\libs\MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Unity Engine -->
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Cryptid Farm Scripts -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\libs\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    
+  </ItemGroup>
   
 </Project>
