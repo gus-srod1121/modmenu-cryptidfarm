@@ -23,10 +23,10 @@
 		<Compile Include="PlantingRangeCore.cs" />
 	</ItemGroup>
 
-	<!-- Reference Library -->
-	<ItemGroup>
-		<ProjectReference Include="..\CryptidLibrary\CryptidLibrary.csproj" />
-	</ItemGroup>
+  <!-- Reference Library -->
+  <ItemGroup>
+    <ProjectReference Include="..\CryptidLibrary\CryptidLibrary.csproj" />
+  </ItemGroup>
 
 	<!-- Reference game DLLs in libs/ folder -->
 	<ItemGroup>

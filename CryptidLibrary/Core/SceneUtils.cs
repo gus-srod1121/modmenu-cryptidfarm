@@ -1,6 +1,6 @@
 ﻿using UnityEngine.SceneManagement;
 
-namespace CryptidLibrary.Core
+namespace grcubes.CryptidLibrary
 {
     public static class SceneUtils
     {
