@@ -1,4 +1,5 @@
 ﻿using CryptidLibrary;
+using CryptidLibrary.Core;
 using MelonLoader;
 
 [assembly: MelonInfo(typeof(LibraryCore), "CryptidLibrary", "0.1.0", "grcubes", null)]
@@ -16,6 +17,7 @@ namespace CryptidLibrary
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             LoggerInstance.Msg($"Scene {buildIndex} Loaded: {sceneName}");
+            SceneUtils.SceneLoaded(buildIndex);
         }
     }
 }
