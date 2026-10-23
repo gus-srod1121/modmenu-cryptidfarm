@@ -39,10 +39,14 @@ namespace PlantingRange
 
             LoggerInstance.Msg("PLAYER STATS:");
 
+            LoggerInstance.Msg("1. " + GameUtils.PlayerStats);
+            LoggerInstance.Msg("1. " + GameUtils.PlayerStats.Stats);
+            LoggerInstance.Msg("1. " + GameUtils.PlayerStats.Stats.Values);
+
             foreach (PlayerStats.stat s in GameUtils.PlayerStats.Stats.Values)
             {
                 LoggerInstance.Msg("\n");
-                LoggerInstance.Msg(GameUtils.GetStatInfo(s));
+                //LoggerInstance.Msg(GameUtils.GetStatInfo(s));
                 LoggerInstance.Msg("\n\n");
             }
 
