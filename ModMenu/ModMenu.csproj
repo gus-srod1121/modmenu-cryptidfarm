@@ -3,13 +3,13 @@
 		<TargetFramework>net472</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<RootNamespace>CryptidMods</RootNamespace>
+		<RootNamespace>ModMenu</RootNamespace>
 		<LangVersion>default</LangVersion>
 		<IsPackable>false</IsPackable>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<AssemblyName>CryptidMods</AssemblyName>
+		<AssemblyName>ModMenu</AssemblyName>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
