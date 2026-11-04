@@ -11,7 +11,7 @@ namespace CryptidLibrary.Core
         public static int CurrentScene { get => SceneManager.GetActiveScene().buildIndex; }
         public static void SceneLoaded(int buildIndex)
         {
-            OnSceneLoaded.Invoke(buildIndex);
+            OnSceneLoaded?.Invoke(buildIndex);
         }
     }
 
